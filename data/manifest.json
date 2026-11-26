@@ -1,0 +1,99 @@
+{
+ "practice": "Murad Counseling PLLC",
+ "date": "2026-11-26",
+ "questions": [
+  {
+   "id": "edu-best-therapy",
+   "market": "education",
+   "intent": "Treatment education",
+   "text": "What is the best therapy for OCD intrusive thoughts?"
+  },
+  {
+   "id": "edu-find-erp",
+   "market": "education",
+   "intent": "How to choose a specialist",
+   "text": "How do I find a therapist who actually does ERP for OCD? What should I look for?"
+  },
+  {
+   "id": "edu-online-erp",
+   "market": "education",
+   "intent": "Telehealth education",
+   "text": "Does online therapy work for OCD? How does ERP work over video?"
+  },
+  {
+   "id": "tx-specialist",
+   "market": "TX",
+   "intent": "Find a specialist",
+   "text": "Who are the best OCD specialists in Texas who see patients online?"
+  },
+  {
+   "id": "tx-erp",
+   "market": "TX",
+   "intent": "Find an ERP therapist",
+   "text": "Can you recommend an ERP therapist in Texas who offers telehealth for OCD?"
+  },
+  {
+   "id": "tx-austin-taboo",
+   "market": "TX",
+   "intent": "Niche: taboo intrusive thoughts",
+   "text": "I'm in Austin, Texas and I keep having taboo intrusive thoughts. I want a therapist who specializes in this. Who should I see?"
+  },
+  {
+   "id": "tx-bfrb",
+   "market": "TX",
+   "intent": "Niche: skin picking (BFRB)",
+   "text": "Who treats skin picking disorder (excoriation) in Texas? I'd prefer online sessions."
+  },
+  {
+   "id": "tx-emetophobia",
+   "market": "TX",
+   "intent": "Niche: emetophobia",
+   "text": "Is there a therapist in Texas who treats emetophobia with exposure therapy?"
+  },
+  {
+   "id": "tx-privatepay",
+   "market": "TX",
+   "intent": "Payment fit: private pay",
+   "text": "I don't want to use insurance. Who are good private-pay OCD therapists in Texas that do telehealth?"
+  },
+  {
+   "id": "wa-specialist",
+   "market": "WA",
+   "intent": "Find a specialist",
+   "text": "Best OCD therapist in Washington state who offers ERP online?"
+  },
+  {
+   "id": "wa-seattle",
+   "market": "WA",
+   "intent": "Find a specialist (city)",
+   "text": "I'm in Seattle and need an OCD specialist who does telehealth. Who do you recommend?"
+  },
+  {
+   "id": "wa-bfrb",
+   "market": "WA",
+   "intent": "Niche: BFRBs",
+   "text": "Who treats trichotillomania or skin picking online in Washington state?"
+  },
+  {
+   "id": "nh-specialist",
+   "market": "NH",
+   "intent": "Find a specialist",
+   "text": "Can you recommend an OCD specialist in New Hampshire who offers ERP through telehealth?"
+  },
+  {
+   "id": "fl-specialist",
+   "market": "FL",
+   "intent": "Find a specialist",
+   "text": "Who are good online OCD therapists that can see patients in Florida?"
+  },
+  {
+   "id": "x-platforms",
+   "market": "cross",
+   "intent": "Platforms vs private specialist",
+   "text": "Should I use NOCD or BetterHelp for OCD, or find a private ERP specialist? How do I decide?"
+  }
+ ],
+ "runs": 2,
+ "answers_ok": 60,
+ "answers_err": 0
+}

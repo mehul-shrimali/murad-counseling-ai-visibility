@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Murad Counseling Report Appendix</title>
+<meta name="description" content="Full technical appendix to the Murad Counseling report: every number, every verification, the complete question table and methodology. Prepared by Glace, November 26, 2026.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --paper: #fcfcfb; --ink: #1d242b; --muted: #5b6672; --line: #e2e6e9;
+  --accent: #19608f; --soft: #f3f6f8;
+  --ok: #1c7a4d; --ok-bg: #e9f4ee; --warn: #8f6312; --warn-bg: #f8f1e2; --bad: #a94339; --bad-bg: #f9ecea;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14181c; --ink: #e7eaed; --muted: #9aa5b0; --line: #2a3137;
+    --accent: #7db5dd; --soft: #1b2127;
+    --ok: #68c598; --ok-bg: #16281f; --warn: #d9b36a; --warn-bg: #2a2315; --bad: #e09289; --bad-bg: #2d1c1a;
+  }
+  html { color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6; margin: 0;
+  padding-block: 44px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.sheet { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 500; font-size: clamp(30px, 5.2vw, 44px); line-height: 1.12; margin: 10px 0 14px; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 26px; line-height: 1.22; margin: 0; text-wrap: balance; }
+h3 { font-size: 15px; font-weight: 700; margin: 8px 0 0; }
+section { display: flex; flex-direction: column; gap: 14px; }
+p { margin: 0; max-width: 68ch; }
+p.aside { color: var(--muted); font-size: 14px; }
+.standfirst { color: var(--muted); max-width: 62ch; }
+
+.hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; background: var(--line); border-block: 1px solid var(--line); }
+.hero-stats > div { background: var(--paper); padding: 18px 16px 16px; }
+.hero-stats .num { font-family: var(--display); font-size: 40px; font-weight: 500; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.hero-stats .num small { font-size: 22px; color: var(--muted); font-weight: 400; }
+.hero-stats .lbl { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+.asked { border-block: 1px solid var(--line); display: flex; flex-direction: column; }
+.asked > div { display: grid; grid-template-columns: minmax(180px, 240px) 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.asked > div:last-child { border-bottom: none; }
+.asked b { font-weight: 600; }
+.asked span { color: var(--muted); }
+@media (max-width: 520px) { .asked > div { grid-template-columns: 1fr; gap: 2px; } }
+
+.tablewrap { overflow-x: auto; border-block: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; min-width: 640px; font-size: 14px; }
+th { text-align: left; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 12px 14px 8px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { vertical-align: top; padding: 10px 14px 10px 0; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+td.c { text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+th.c { text-align: center; }
+th.r { text-align: right; }
+td.src { font-weight: 600; white-space: nowrap; }
+.miss { color: var(--muted); }
+.hit { color: var(--ok); font-weight: 700; }
+td .intent { display: block; font-size: 12px; color: var(--muted); }
+
+.chip { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; border-radius: 4px; padding: 2px 8px; white-space: nowrap; }
+.chip.live { color: var(--ok); background: var(--ok-bg); }
+.chip.index { color: var(--warn); background: var(--warn-bg); }
+.chip.dead { color: var(--bad); background: var(--bad-bg); }
+
+blockquote { margin: 0; border-left: 3px solid var(--accent); padding: 10px 0 10px 18px; max-width: 66ch; font-size: 15px; }
+blockquote .who { font-weight: 600; }
+blockquote footer { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+.cites { display: flex; flex-direction: column; gap: 8px; border-block: 1px solid var(--line); padding-block: 14px; }
+.cite-row { display: grid; grid-template-columns: 200px 1fr 70px; gap: 12px; align-items: center; font-size: 14px; }
+.cite-row .bar-track { background: var(--soft); border-radius: 3px; height: 14px; min-width: 0; }
+.cite-row .bar { background: var(--accent); border-radius: 3px; height: 14px; }
+.cite-row .n { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+@media (max-width: 560px) { .cite-row { grid-template-columns: 130px 1fr 54px; } }
+
+ol.plan { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 14px; max-width: 68ch; }
+ol.plan b { display: block; }
+ol.plan li::marker { font-weight: 700; color: var(--accent); }
+
+ul.checks { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 7px; max-width: 68ch; }
+ul.checks li { padding-left: 22px; position: relative; font-size: 15px; }
+ul.checks li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 700; }
+
+.queries { display: flex; flex-wrap: wrap; gap: 8px; }
+.queries span { font-size: 13.5px; background: var(--soft); border: 1px solid var(--line); border-radius: 99px; padding: 4px 12px; white-space: nowrap; }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px 28px; border-top: 1px solid var(--line); padding-top: 14px; }
+.facts div { font-size: 14px; min-width: 0; }
+.facts b { display: block; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+
+.panel { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+footer.page { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+footer.page p { max-width: none; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header>
+    <p class="eyebrow">Appendix · full detail behind <a href="index.html">the report</a> · November 26, 2026</p>
+    <h1>When patients ask AI for OCD help, how often does it say your name?</h1>
+    <p class="standfirst">We asked ChatGPT and Gemini 15 questions that real patients ask, across the four states you serve, twice each. 60 answers in total, collected on November 26, 2026. Every transcript is published with this report, unedited. Around that measurement, this report covers your search presence, your markets and their demographics, and your competitive position.</p>
+  </header>
+
+  <div class="hero-stats">
+    <div><div class="num">2<small> / 60</small></div><div class="lbl">answers named Murad Counseling</div></div>
+    <div><div class="num">0<small> / 30</small></div><div class="lbl">ChatGPT answers that named you</div></div>
+    <div><div class="num">2<small> / 30</small></div><div class="lbl">Gemini answers that named you</div></div>
+    <div><div class="num">25<small> / 60</small></div><div class="lbl">answers that named NOCD</div></div>
+  </div>
+
+  <section>
+    <p class="eyebrow">What you asked</p>
+    <h2>Five questions, five sections</h2>
+    <div class="asked">
+      <div><b>Analysis of my practice</b><span>The practice as we read it, below. Everything from your own site, read in full on November 26.</span></div>
+      <div><b>Current SEO performance</b><span>Your search presence today: site health, patient-intent searches, your brand query, and your Google Business Profile status.</span></div>
+      <div><b>Competitive positioning</b><span>Who AI recommends instead, observed from 60 answers, and where your positioning is strongest.</span></div>
+      <div><b>Target demographics</b><span>State-by-state demand estimates from public prevalence data.</span></div>
+      <div><b>Geographic markets</b><span>Four state markets gated by licensure, with what the engines did in each one.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Your practice · read November 26</p>
+    <h2>The practice as we read it</h2>
+    <p>Murad Counseling PLLC is led by Felix Murad, M.Ed., LPC-S, LMHC, CMHC, NCC. Sessions are video only; no in-person care is offered. The clinical focus is OCD treated with exposure and response prevention, alongside anxiety and panic, trauma therapy (EMDR, CPT, prolonged exposure), and body-focused repetitive behaviors, with emetophobia treatment named on the services page. The practice is private pay, accepts insurance only through Headway until December 31, 2026, and is fully out of network from January 1, 2027. The registered address is in Austin, TX 78717.</p>
+    <div class="facts">
+      <div><b>Licensed</b>Texas (LPC-S) · Washington (LMHC) · New Hampshire (CMHC)</div>
+      <div><b>Florida</b>Out-of-state telehealth provider registration</div>
+      <div><b>Care model</b>Telehealth only, adults; individual, groups, supervision</div>
+      <div><b>Fee</b>$200 per 60-minute session, private pay</div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Current SEO · checked November 26</p>
+    <h2>Your search presence today</h2>
+    <h3>The site itself is in good order</h3>
+    <ul class="checks">
+      <li>robots.txt is open: no AI crawler (GPTBot, OAI-SearchBot, Google-Extended, ClaudeBot) is blocked</li>
+      <li>Structured data is present and correct: Organization and ProfessionalService markup naming Murad Counseling PLLC at the Austin address</li>
+      <li>Sitemaps are current, last updated November 25, 2026, across roughly 120 pages</li>
+      <li>Condition-first positioning is clear in titles and headings</li>
+    </ul>
+    <h3>Patient-intent searches do not reach you, or any solo practice</h3>
+    <p>We ran four searches that mirror how patients look for this care:</p>
+    <div class="queries">
+      <span>online OCD therapy Texas</span>
+      <span>ERP therapist Texas telehealth</span>
+      <span>OCD therapist Washington state online</span>
+      <span>therapist for skin picking online Texas</span>
+    </div>
+    <p>Every result came from a directory, a national platform, or a content site: Psychology Today, Grow Therapy, Zencare, TherapyTribe, Talkspace, Thriveworks, NOCD, IOCDF, and SkinPick. No independent practice website appeared. For condition-plus-state queries this is the structure of the category, not a defect of your site, and it is why we would not sell you rank-chasing SEO against those directories.</p>
+    <h3>Your own brand query is carried by other people's pages</h3>
+    <p>Searching your exact practice name through our tooling returns directory profiles (Zocdoc, the Psychology Today profile that places you in Harlingen, TherapyFinder, Mind Diagnostics) and legacy pages rather than muradcounseling.com. Among them is an old SimplePractice booking page, felix-murad.clientsecure.me, which now returns a 404 when loaded, while search-indexed copies of legacy profiles still present older fees and an older insurance list that contradict your current site. Result sets vary by engine and user, so confirm this in your own browser; the dead booking page and the contradictions are the durable part.</p>
+    <h3>You have no Google Business Profile</h3>
+    <p>We queried Google's Places index directly through its API on November 26: no listing exists for Murad Counseling or for Felix Murad. For a telehealth practice that can be a deliberate choice, and we would treat it as a decision to make rather than an error. A service-area profile anchored to the Austin office, with the address hidden, would give your brand query one authoritative result you control and would feed Google's own index, which is what grounds Gemini's answers.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Geographic markets and demographics</p>
+    <h2>Four state markets, gated by licensure</h2>
+    <p>Because sessions are virtual and licensure is state-gated, this practice competes in four state-level markets. Patients rarely type a state into a search; geography is applied for them by machines, through "near me" localization, directory state filters, and AI assistants that ask where the patient lives before recommending anyone. The estimates below describe each market's demand pool, with what we observed the engines doing in each state during the scan.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>State</th><th>Basis</th><th class="r">Adults (est.)</th><th class="r">OCD in a given year (est.)</th><th>What the engines did there</th></tr></thead>
+        <tbody>
+          <tr><td class="src">Texas</td><td>LPC-S license</td><td class="r">~23.5M</td><td class="r">~280,000</td><td>Deepest specialist supply. Your one Texas mention came on the skin-picking question, your strongest niche.</td></tr>
+          <tr><td class="src">Florida</td><td>Telehealth registration</td><td class="r">~18.3M</td><td class="r">~220,000</td><td>Platform-swept: NOCD was named in all four Florida answers.</td></tr>
+          <tr><td class="src">Washington</td><td>LMHC license</td><td class="r">~6.3M</td><td class="r">~75,000</td><td>Mixed field of solo specialists and groups. Your one generic-OCD mention happened here.</td></tr>
+          <tr><td class="src">New Hampshire</td><td>CMHC license</td><td class="r">~1.1M</td><td class="r">~13,000</td><td>Thinnest supply: ChatGPT named individual clinicians by name. The most winnable market per capita.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Across the four states that is roughly 49 million adults and, at NIMH's twelve-month prevalence of about 1.2 percent, on the order of 590,000 adults experiencing OCD in a given year. Your BFRB specialty widens the pool further: current skin-picking disorder affects about 2.1 percent of US adults in the most rigorous US survey (Grant and Chamberlain, 2020), which is roughly one million adults across your four states. The practice's target patient is an adult who has learned what ERP is, can pay privately or out of network, and is matched to you by a machine at the moment of choosing. A full solo caseload needs a few dozen new patients a year from these pools; the goal is presence at the matching moment, never mass reach.</p>
+    <p class="aside">Population figures are rounded public census estimates; prevalence rates are from NIMH and published studies. These describe demand pools, not traffic or patient projections.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Method</p>
+    <h2>What we asked the AI assistants, and why</h2>
+    <p>The question set mirrors the patient funnel described above. Three questions measure the education stage, where no geography exists yet. Twelve measure the recommendation moment, with the state injected the way an AI conversation injects it: six for Texas, three for Washington, one each for New Hampshire and Florida, and one that asks how to choose between platforms and a private specialist. Every question is traceable to documented patient language: Google Autocomplete completions harvested on November 26 (examples below), the IOCDF's published guidance on finding an ERP therapist, and the decision patterns visible in patient communities.</p>
+    <div class="queries">
+      <span>ocd therapist near me</span>
+      <span>erp therapist for ocd near me</span>
+      <span>best therapy for ocd intrusive thoughts</span>
+      <span>ocd therapist near me no insurance</span>
+      <span>emetophobia therapist near me</span>
+      <span>skin picking disorder treatment</span>
+      <span>how to find ocd therapist</span>
+    </div>
+    <p class="aside">Engines: ChatGPT (GPT-5.6 with live web search) and Gemini (Gemini 3.6 Flash with Google Search grounding), the same configurations our production scans use. Two independent runs per question per engine, because AI answers vary between asks.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Results · 60 answers, November 26, 2026</p>
+    <h2>Question by question</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Question</th><th>Market</th><th class="c">ChatGPT</th><th class="c">Gemini</th></tr></thead>
+        <tbody>
+          <tr><td>What is the best therapy for OCD intrusive thoughts?<span class="intent">Treatment education</span></td><td>none</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>How do I find a therapist who actually does ERP for OCD? What should I look for?<span class="intent">How to choose a specialist</span></td><td>none</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Does online therapy work for OCD? How does ERP work over video?<span class="intent">Telehealth education</span></td><td>none</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Who are the best OCD specialists in Texas who see patients online?<span class="intent">Find a specialist</span></td><td>TX</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Can you recommend an ERP therapist in Texas who offers telehealth for OCD?<span class="intent">Find an ERP therapist</span></td><td>TX</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>I'm in Austin, Texas and I keep having taboo intrusive thoughts. I want a therapist who specializes in this. Who should I see?<span class="intent">Niche: taboo intrusive thoughts</span></td><td>TX</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Who treats skin picking disorder (excoriation) in Texas? I'd prefer online sessions.<span class="intent">Niche: skin picking (BFRB)</span></td><td>TX</td><td class="c miss">0 / 2</td><td class="c hit">1 / 2</td></tr>
+          <tr><td>Is there a therapist in Texas who treats emetophobia with exposure therapy?<span class="intent">Niche: emetophobia</span></td><td>TX</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>I don't want to use insurance. Who are good private-pay OCD therapists in Texas that do telehealth?<span class="intent">Payment fit: private pay</span></td><td>TX</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Best OCD therapist in Washington state who offers ERP online?<span class="intent">Find a specialist</span></td><td>WA</td><td class="c miss">0 / 2</td><td class="c hit">1 / 2</td></tr>
+          <tr><td>I'm in Seattle and need an OCD specialist who does telehealth. Who do you recommend?<span class="intent">Find a specialist (city)</span></td><td>WA</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Who treats trichotillomania or skin picking online in Washington state?<span class="intent">Niche: BFRBs</span></td><td>WA</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Can you recommend an OCD specialist in New Hampshire who offers ERP through telehealth?<span class="intent">Find a specialist</span></td><td>NH</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Who are good online OCD therapists that can see patients in Florida?<span class="intent">Find a specialist</span></td><td>FL</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+          <tr><td>Should I use NOCD or BetterHelp for OCD, or find a private ERP specialist? How do I decide?<span class="intent">Platforms vs private specialist</span></td><td>all</td><td class="c miss">0 / 2</td><td class="c miss">0 / 2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">The two answers that named you</p>
+    <h2>When an engine reaches you, it describes you correctly</h2>
+    <p>Both mentions came from Gemini, and both descriptions are accurate. This matters: your website's structured data is doing its job. The problem is reach, and reach is fixable.</p>
+    <blockquote>
+      <span class="who">"Murad Counseling – Felix Murad, LPC (Statewide Telehealth)."</span> "Specializes in adults dealing with skin picking, hair pulling, and related behaviors using HRT, ComB, and ACT. Sessions: Telehealth across Texas."
+      <footer>Gemini, Texas skin-picking question, run 2 of 2. Full transcript: data/answers/tx-bfrb.gemini.1.json</footer>
+    </blockquote>
+    <blockquote>
+      <span class="who">"Murad Counseling PLLC."</span> "Dedicated online OCD therapy practice for adults in Washington. ERP-informed treatment integrated with ACT. Highly experienced in addressing mental compulsions (rumination, mental checking, reassurance-seeking)."
+      <footer>Gemini, Washington OCD specialist question, run 1 of 2. Full transcript: data/answers/wa-specialist.gemini.0.json</footer>
+    </blockquote>
+  </section>
+
+  <section>
+    <p class="eyebrow">Competitive positioning · as named in the 60 answers</p>
+    <h2>Who AI recommends instead, and where you can win</h2>
+    <p>NOCD was named in 25 of 60 answers, including all four Florida answers. Psychology Today was pointed to in 17, BetterHelp in 4. Among individual specialists and practices, the names that recurred across answers include Dr. Chad Brandt (Houston), Dr. Amitai Abramovitch, Loni Itah (Austin), Priscilla Elliott of Courage Counseling (Austin, BFRB focus), Austin Anxiety and OCD Specialists, Maggie Holland Counseling (Washington), and Talk Heal Thrive (Seattle and Bellevue). We list these exactly as the engines named them; we have not vetted them.</p>
+    <p>Three things stand out. First, solo and small practices do get named, repeatedly, so this is a winnable surface for a specialist. Second, the engines consistently prefer clinicians whose specialty is legible in the sources they read: the people named for skin picking are BFRB-dedicated, the people named for ERP carry visible ERP training. Third, your differentiation is real and already machine-readable: a supervisor-credentialed ERP specialist with named niches (taboo intrusive thoughts, emetophobia, BFRBs) where specialist supply is thinnest, and a clear private-pay model at a price point the engines can state plainly. The positioning does not need to change. It needs to be present in the sources the engines read.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Sources · extracted from the same 60 answers</p>
+    <h2>What AI reads before it answers</h2>
+    <p>Across the 60 answers, one source towers over everything: the International OCD Foundation. ChatGPT cited iocdf.org 123 times; Gemini a further 17. That is more than every other source combined.</p>
+    <div class="cites">
+      <div class="cite-row"><span>iocdf.org</span><div class="bar-track"><div class="bar" style="width:100%"></div></div><span class="n">140</span></div>
+      <div class="cite-row"><span>bfrb.org (TLC Foundation)</span><div class="bar-track"><div class="bar" style="width:9.3%"></div></div><span class="n">13</span></div>
+      <div class="cite-row"><span>psychologytoday.com</span><div class="bar-track"><div class="bar" style="width:3.6%"></div></div><span class="n">5</span></div>
+      <div class="cite-row"><span>drchadbrandt.com</span><div class="bar-track"><div class="bar" style="width:2.9%"></div></div><span class="n">4</span></div>
+      <div class="cite-row"><span>individual practice sites (all others)</span><div class="bar-track"><div class="bar" style="width:13.6%"></div></div><span class="n">~19</span></div>
+    </div>
+    <p>Individual practice websites were cited directly, so the engines are willing to read and credit a solo practice's own site. We searched for a Murad Counseling listing in the IOCDF Resource Directory on November 26 and could not find one. If that holds when checked directly with IOCDF, it is the single most consequential gap in this report: the directory AI leans on hardest does not contain you.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Why you are missing · desk review of November 26</p>
+    <h2>The listings machines read disagree with your website</h2>
+    <p>Your own site is healthy. The breakage is one layer out, in the profiles that search engines and AI assistants read when they localize a patient's question.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Source</th><th>What we observed</th><th>How verified</th></tr></thead>
+        <tbody>
+          <tr><td class="src">Google Business Profile</td><td>No listing exists for Murad Counseling or Felix Murad in Google's Places index.</td><td><span class="chip live">API, verified</span></td></tr>
+          <tr><td class="src">IOCDF Resource Directory</td><td>No listing found for Murad Counseling or Felix Murad as of November 26. Confirm directly with IOCDF.</td><td><span class="chip index">Not found</span></td></tr>
+          <tr><td class="src">BetterHelp</td><td>Live and current. Lists your TX, WA, and NH licenses but shows no practice name, city, or website, so the profile credits BetterHelp rather than Murad Counseling.</td><td><span class="chip live">Verified live</span></td></tr>
+          <tr><td class="src">SimplePractice booking page</td><td>felix-murad.clientsecure.me returns 404, while search-indexed copies of legacy profiles still present older fees and an older insurance list that contradict your current site.</td><td><span class="chip dead">Dead, still indexed</span></td></tr>
+          <tr><td class="src">therapist.com</td><td>Shows "This therapist is no longer listed." A dead profile search engines still index.</td><td><span class="chip dead">Live, delisted</span></td></tr>
+          <tr><td class="src">Psychology Today</td><td>Live page refuses automated readers. The search-indexed copy places the practice in Harlingen, TX 78550 with an additional Bellevue, WA location.</td><td><span class="chip index">Indexed copy</span></td></tr>
+          <tr><td class="src">Zocdoc</td><td>Two separate practice profiles and three clinician profiles under differing credential sets appear in the index.</td><td><span class="chip index">Indexed copy</span></td></tr>
+          <tr><td class="src">Healthline / Sharecare</td><td>Index entries associate the profile with Sebastian, TX.</td><td><span class="chip index">Indexed copy</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow">The plan, in priority order</p>
+    <h2>How you start showing up</h2>
+    <ol class="plan">
+      <li><b>IOCDF membership and Resource Directory listing.</b> The directory AI cites most, 140 times in these 60 answers, and the community's canonical referral source. Highest leverage, lowest effort.</li>
+      <li><b>TLC Foundation (bfrb.org) directory listing.</b> The second most cited source, and BFRBs are a niche where Gemini already names you. Make the win repeatable.</li>
+      <li><b>Directory repair.</b> Correct the Psychology Today location and add state listings for WA, NH, and FL; merge the duplicate Zocdoc profiles; retire the delisted therapist.com entry and the dead SimplePractice page's indexed remnants; either name the practice on the BetterHelp profile or retire it.</li>
+      <li><b>Decide the Google Business Profile question.</b> A service-area profile with the address hidden gives your brand query one result you control and feeds the index Gemini grounds on. If you prefer no profile, that is defensible too, but it should be a decision rather than a default.</li>
+      <li><b>Add the missing Florida state page on muradcounseling.com.</b> The site already carries state pages for Texas, Washington, and New Hampshire (ocd-therapy-texas, ocd-therapy-washington, ocd-therapy-new-hampshire, bfrb-therapy-new-hampshire, emetophobia-therapy-washington; verified in the sitemap November 26). Florida, where the practice holds telehealth registration, has none.</li>
+      <li><b>Continued authority content on your niches.</b> The site already publishes exactly this (taboo-thoughts-ocd, an emetophobia series, a skin-picking series; verified in the post sitemap November 26). The opportunity is continued depth and making these the pages directories and AI answers cite, not starting from zero.</li>
+      <li><b>Re-scan on a schedule.</b> The same 15 questions, the same method, so movement is measured rather than promised.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Honesty notes</p>
+    <h2>What this report does and does not claim</h2>
+    <p>All 60 raw transcripts are published unedited in this report's repository, in <a href="https://github.com/mehul-shrimali/murad-counseling-ai-visibility/tree/main/data/answers">data/answers</a>, with the question manifest in <a href="data/manifest.json">data/manifest.json</a>. AI answers vary between runs; two runs per engine is a sample, not a census, and a different day would produce somewhat different answers. Items marked "Indexed copy" above were read from search engine indexes because the live pages refuse automated readers, and should be confirmed in a normal browser; brand-query result sets also vary by engine and user. The Google Business Profile check was made directly against Google's Places API. Population figures are rounded public census estimates; prevalence rates are NIMH's twelve-month OCD figure and Grant and Chamberlain's 2020 US survey for skin-picking disorder. We did not audit the practice's social channels, and we have no access to its analytics, Search Console, or referral data, and make no claims about them.</p>
+  </section>
+
+  <footer class="page">
+    <p>Prepared by Glace (glace.sh) for Felix Murad, M.Ed., LPC-S · November 26, 2026.</p>
+    <p>Measurement methodology as published in our September 2026 study of 1,140 AI answers across 19 healthcare markets: <a href="https://glace.sh/blog/ai-healthcare-recommendation-study/">How AI recommends healthcare practices</a>.</p>
+  </footer>
+
+</div>
+</body>
+</html>

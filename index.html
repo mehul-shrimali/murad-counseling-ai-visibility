@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Murad Counseling AI Visibility Report</title>
+<meta name="description" content="We asked ChatGPT and Gemini for an OCD therapist 60 times across the four states Murad Counseling serves. Prepared by Glace, November 26, 2026.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --paper: #fcfcfb; --ink: #1d242b; --muted: #5b6672; --line: #e2e6e9;
+  --accent: #3E7396; --accent-soft: #EBF2F8; --soft: #f3f6f8;
+  --ok: #1c7a4d; --ok-bg: #e9f4ee; --bad: #a94339; --bad-bg: #f9ecea;
+  --gauge-track: #e9edf4; --gauge-fill: #c44;
+  --gem-bg: #ffffff; --gem-user: #f0f4f9; --gem-text: #1f1f1f; --gem-blue: #1a73e8;
+  --display: "Newsreader", Georgia, "Times New Roman", serif;
+  --body: "Instrument Sans", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14181c; --ink: #e7eaed; --muted: #9aa5b0; --line: #2a3137;
+    --accent: #7db5dd; --accent-soft: #20303d; --soft: #1b2127;
+    --ok: #68c598; --ok-bg: #16281f; --bad: #e09289; --bad-bg: #2d1c1a;
+    --gauge-track: #2a3137; --gauge-fill: #d96a60;
+    --gem-bg: #1e1f20; --gem-user: #333537; --gem-text: #e3e3e3; --gem-blue: #8ab4f8;
+  }
+  html { color-scheme: dark; }
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6; margin: 0;
+  padding-block: 44px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.sheet { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); flex: none; }
+.eyebrow .knum { color: var(--accent); font-weight: 600; }
+h1 { font-family: var(--display); font-weight: 500; font-size: 2rem; line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.012em; font-optical-sizing: auto; }
+.meta { color: var(--muted); font-size: 0.8rem; margin: 4px 0 0; }
+.headrow { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+.brandrow { display: flex; align-items: center; gap: 10px; }
+.brandmark { height: 30px; width: auto; display: block; }
+.brandword { font-weight: 400; font-size: 1.02rem; letter-spacing: 0.34em; color: var(--ink); transform: translateY(1px); }
+h2 { font-family: var(--display); font-weight: 500; font-size: 27px; line-height: 1.2; margin: 0; text-wrap: balance; }
+section { display: flex; flex-direction: column; gap: 16px; }
+p { margin: 0; max-width: 66ch; }
+p.key { font-size: 17px; max-width: 62ch; }
+p.aside { color: var(--muted); font-size: 14px; }
+
+.wcard { border: 1px solid var(--line); border-radius: 16px; padding: 28px 30px; background: var(--paper); }
+.herogrid { display: grid; grid-template-columns: minmax(280px, 400px) 1fr; gap: 40px; align-items: center; }
+@media (max-width: 760px) { .herogrid { grid-template-columns: 1fr; } }
+.cardhead { font-family: var(--display); font-weight: 500; font-size: 1.8rem; line-height: 1.25; letter-spacing: -0.012em; margin: 0; text-wrap: balance; }
+.gsplit { display: flex; gap: 32px; border-top: 1px solid var(--line); margin-top: 16px; padding-top: 16px; flex-wrap: wrap; align-items: center; }
+.gsplit .gk { font-size: 13px; font-weight: 700; }
+.gsplit .gbig { font-family: var(--display); font-size: 34px; line-height: 1.1; color: var(--accent); }
+.gsplit .gsub { font-size: 12.5px; color: var(--muted); }
+.gauge-wrap { max-width: 400px; }
+.gauge-wrap svg { width: 100%; height: auto; display: block; }
+.gauge-score { font-family: var(--display); font-size: 34px; fill: var(--ink); }
+.gauge-word { font-size: 13px; font-weight: 700; letter-spacing: .12em; fill: var(--gauge-fill); }
+.sysrows { display: flex; flex-direction: column; gap: 10px; }
+.sysrow { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; }
+.sysrow .cnt { margin-left: auto; font-variant-numeric: tabular-nums; }
+.sysrow .cnt small { color: var(--muted); font-weight: 400; }
+.ico { width: 22px; height: 22px; display: inline-flex; flex: none; }
+.ico svg { width: 100%; height: 100%; }
+.ico-openai { color: var(--ink); }
+
+.badges { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+.badge { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: var(--paper); }
+.badge .stmt { font-size: 16.5px; font-weight: 600; line-height: 1.4; margin: 0; }
+.badge .stmt em { font-style: normal; color: var(--accent); }
+.badge .ctx { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+
+.steps { display: flex; flex-direction: column; gap: 12px; counter-reset: step; max-width: 66ch; }
+.step { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+.step .n { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: var(--paper); font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.step b { display: block; }
+.step p { font-size: 15px; }
+
+.queries { display: flex; flex-wrap: wrap; gap: 8px; }
+.queries span, .pill { font-size: 13.5px; background: var(--soft); border: 1px solid var(--line); border-radius: 99px; padding: 4px 12px; white-space: nowrap; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill-ok { background: var(--ok-bg); border-color: transparent; color: var(--ok); font-weight: 600; }
+.pill-out { background: var(--bad-bg); border-color: transparent; color: var(--bad); font-weight: 600; }
+
+.chatmocks { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.chatwrap { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.chatmock { border: 1px solid var(--line); border-radius: 22px; padding: 18px 20px 16px; display: flex; flex-direction: column; gap: 16px; min-width: 0; background: var(--gem-bg); box-shadow: 0 1px 4px rgba(16,23,42,.05); }
+.gem-top { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: var(--gem-text); }
+.gem-user { display: flex; justify-content: flex-end; }
+.gem-user p { background: var(--gem-user); color: var(--gem-text); border-radius: 18px 6px 18px 18px; padding: 10px 16px; max-width: 85%; margin: 0; font-size: 14.5px; line-height: 1.5; }
+.gem-reply { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; }
+.gem-reply .ico { margin-top: 2px; }
+.gem-reply .gem-text { font-size: 14.5px; line-height: 1.65; color: var(--gem-text); }
+.gem-text b { color: var(--gem-blue); }
+.gem-input { border: 1px solid var(--line); border-radius: 99px; padding: 9px 18px; color: var(--muted); font-size: 13.5px; }
+.proof-cap { color: var(--muted); font-size: 12.5px; margin: 0 0 0 8px; }
+
+.cites { display: flex; flex-direction: column; gap: 10px; border-block: 1px solid var(--line); padding-block: 16px; }
+.cite-row { display: grid; grid-template-columns: minmax(150px, 240px) 1fr 54px; gap: 12px; align-items: center; font-size: 14px; }
+.cite-row .bar-track { background: var(--soft); border-radius: 3px; height: 14px; min-width: 0; }
+.cite-row .bar { background: var(--accent); border-radius: 3px; height: 14px; }
+.cite-row .n { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+@media (max-width: 560px) { .cite-row { grid-template-columns: 120px 1fr 48px; font-size: 13px; } }
+
+.tablewrap { border-block: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th { text-align: left; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: 12px 14px 8px 0; border-bottom: 1px solid var(--line); }
+td { vertical-align: top; padding: 11px 14px 11px 0; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: none; }
+td.src { font-weight: 600; white-space: nowrap; }
+@media (max-width: 480px) { td.src { white-space: normal; } }
+
+.statechips { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.statechip { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.statechip b { display: block; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.statechip .v { font-family: var(--display); font-size: 26px; font-variant-numeric: tabular-nums; }
+.statechip p { font-size: 12.5px; color: var(--muted); margin: 2px 0 0; }
+
+ol.plan { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 14px; max-width: 66ch; }
+ol.plan b { display: block; }
+ol.plan li::marker { font-weight: 700; color: var(--accent); }
+
+.beforeafter { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; max-width: 540px; }
+.ba { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.ba b { display: block; font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.ba .v { font-family: var(--display); font-size: 30px; }
+.ba.after .v { color: var(--muted); }
+
+.panel { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px; }
+footer.page { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+footer.page p { max-width: none; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="headrow">
+    <div>
+      <h1>AI Visibility Report for Murad Counseling</h1>
+      <p class="meta">Austin · 2026-11-26 · Confidential</p>
+    </div>
+    <div class="brandrow">
+      <img class="brandmark" src="https://glace.sh/assets/glace-logo.png" alt="Glace">
+      <span class="brandword">GLACE</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">01</span>Your AI visibility today</p>
+    <div class="wcard">
+      <div class="herogrid">
+      <div>
+      <div class="gauge-wrap">
+        <svg viewBox="0 0 200 118" role="img" aria-label="Murad Counseling is named in 3 percent of AI answers, 2 of 60, low">
+          <path d="M20,100 A80,80 0 0 1 180,100" fill="none" stroke="var(--gauge-track)" stroke-width="20" stroke-linecap="round"/>
+          <path d="M20,100 A80,80 0 0 1 180,100" fill="none" stroke="var(--gauge-fill)" stroke-width="20" stroke-linecap="round" stroke-dasharray="8.4 251.3"/>
+          <circle cx="20.5" cy="91.5" r="6.5" fill="var(--paper)" stroke="var(--gauge-fill)" stroke-width="4"/>
+          <text x="100" y="78" text-anchor="middle" class="gauge-score">3%</text>
+          <text x="100" y="112" text-anchor="middle" class="gauge-word">LOW</text>
+        </svg>
+      </div>
+      <div class="gsplit">
+        <div>
+          <div class="gk">Named at least once</div>
+          <div class="gbig">3%</div>
+          <div class="gsub">of total answers (2 of 60)</div>
+        </div>
+        <div class="sysrows">
+        <div class="sysrow"><span class="ico ico-openai"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.073zM13.2599 22.4302a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7371l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4946zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615l-4.8303 2.7865a4.4992 4.4992 0 0 1-6.1503-1.6416zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865a4.504 4.504 0 0 1-1.6464-6.1408zm16.5963 3.8558l-5.8144-3.3543 2.0201-1.1685a.0757.0757 0 0 1 .071 0l4.8303 2.7865a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.4305-.6907zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997z"/></svg></span>ChatGPT<span class="cnt">0%<small> (0 of 30)</small></span></div>
+        <div class="sysrow"><span class="ico"><svg viewBox="0 0 24 24"><defs><linearGradient id="gg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C7DFF"/><stop offset=".55" stop-color="#4F6BF6"/><stop offset="1" stop-color="#A96BF6"/></linearGradient></defs><path fill="url(#gg1)" d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10z"/></svg></span>Gemini<span class="cnt">7%<small> (2 of 30)</small></span></div>
+      </div>
+      </div>
+      </div>
+      <div>
+        <p class="cardhead">3% of the AI answers name Murad Counseling</p>
+        <p style="margin-top: 10px; max-width: 54ch;">Across all the answers we collected, AI recommended your practice at least once in 3% of them: 2 answers out of 60, both from Gemini. We asked the questions your patients ask in Texas, Washington, New Hampshire, and Florida on November 26, 2026, each question twice on ChatGPT and Gemini.</p>      </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">02</span>First, what's working</p>
+    <h2>The practice is the strong part</h2>
+    <div class="badges">
+      <div class="badge"><p class="stmt">You treat what most therapists <em>won't touch</em></p><p class="ctx">OCD · taboo intrusive thoughts · skin picking · emetophobia</p></div>
+      <div class="badge"><p class="stmt">You can see patients in <em>four states</em></p><p class="ctx">TX · WA · NH · FL</p></div>
+      <div class="badge"><p class="stmt">Your website is <em>in good shape</em></p><p class="ctx">machines can read every page</p></div>
+      <div class="badge"><p class="stmt">When AI finds you, it gets you <em>exactly right</em></p><p class="ctx">see its own answers below</p></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">03</span>The new referral path</p>
+    <h2>Your next patient asks AI first</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><p>A person asks ChatGPT, in private, about the thoughts they won't say out loud.</p></div>
+      <div class="step"><span class="n">2</span><p>ChatGPT explains the right treatment and says: find a specialist.</p></div>
+      <div class="step"><span class="n">3</span><p>ChatGPT asks what state they live in, then gives them a few therapist names from its lists.</p></div>
+    </div>
+    <p class="aside">What patients actually type:</p>
+    <div class="queries">
+      <span>ocd therapist near me</span>
+      <span>how to find ocd therapist</span>
+      <span>skin picking disorder treatment</span>
+      <span>emetophobia therapist near me</span>
+      <span>ocd therapist near me no insurance</span>
+    </div>
+    <p class="key">Your patients carry thoughts they're afraid to tell anyone. So they ask AI first, in private. And where Google gave them pages of links to scroll through, AI gives them just two or three names. Either you are one of those names, or the patient never hears of you.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">04</span>Proof the problem is reach, not quality</p>
+    <h2>When AI finds you, it describes you perfectly</h2>
+    <div class="chatmocks">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gemgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1C7DFF"/><stop offset=".55" stop-color="#4F6BF6"/><stop offset="1" stop-color="#A96BF6"/></linearGradient></defs></svg>
+      <div class="chatwrap">
+        <div class="chatmock">
+          <div class="gem-top"><span class="ico"><svg viewBox="0 0 24 24"><path fill="url(#gemgrad)" d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10z"/></svg></span>Gemini</div>
+          <div class="gem-user"><p>Who treats skin picking disorder in Texas? I'd prefer online sessions.</p></div>
+          <div class="gem-reply"><span class="ico"><svg viewBox="0 0 24 24"><path fill="url(#gemgrad)" d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10z"/></svg></span><div class="gem-text"><b>Murad Counseling – Felix Murad, LPC (Statewide Telehealth).</b> Focus: Specializes in adults dealing with skin picking, hair pulling, and related behaviors using HRT, ComB, and ACT. Sessions: Telehealth across Texas.</div></div>
+          <div class="gem-input">Ask Gemini</div>
+        </div>
+        <p class="proof-cap">Gemini's actual answer, November 26, 2026</p>
+      </div>
+      <div class="chatwrap">
+        <div class="chatmock">
+          <div class="gem-top"><span class="ico"><svg viewBox="0 0 24 24"><path fill="url(#gemgrad)" d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10z"/></svg></span>Gemini</div>
+          <div class="gem-user"><p>Best OCD therapist in Washington state who offers ERP online?</p></div>
+          <div class="gem-reply"><span class="ico"><svg viewBox="0 0 24 24"><path fill="url(#gemgrad)" d="M12 2c.6 5.4 4.6 9.4 10 10-5.4.6-9.4 4.6-10 10-.6-5.4-4.6-9.4-10-10 5.4-.6 9.4-4.6 10-10z"/></svg></span><div class="gem-text"><b>Murad Counseling PLLC.</b> Overview: Dedicated online OCD therapy practice for adults in Washington. Modality: ERP-informed treatment integrated with ACT. Highly experienced in addressing mental compulsions (rumination, mental checking, reassurance-seeking).</div></div>
+          <div class="gem-input">Ask Gemini</div>
+        </div>
+        <p class="proof-cap">Gemini's actual answer, November 26, 2026</p>
+      </div>
+    </div>
+    <p class="key">Both descriptions are accurate, down to the methods you use. AI understands exactly what you do. It just almost never finds you.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">05</span>The reason, part one</p>
+    <h2>AI picks therapists from a few lists. The biggest one doesn't have you.</h2>
+    <div class="cites">
+      <div class="cite-row"><span>International OCD Foundation therapist list</span><div class="bar-track"><div class="bar" style="width:100%"></div></div><span class="n">140×</span></div>
+      <div class="cite-row"><span>TLC Foundation list (skin picking, hair pulling)</span><div class="bar-track"><div class="bar" style="width:9.3%"></div></div><span class="n">13×</span></div>
+      <div class="cite-row"><span>Psychology Today</span><div class="bar-track"><div class="bar" style="width:3.6%"></div></div><span class="n">5×</span></div>
+      <div class="cite-row"><span>Individual therapists' own websites</span><div class="bar-track"><div class="bar" style="width:16.4%"></div></div><span class="n">~23×</span></div>
+    </div>
+    <div class="pills">
+      <span class="pill pill-out">IOCDF list: we could not find you</span>
+      <span class="pill pill-out">Google listing: none exists</span>
+      <span class="pill pill-ok">Your own website: readable and correct</span>
+    </div>
+    <p class="key">One list towers over everything: the International OCD Foundation's therapist directory. In 60 answers, AI checked it 140 times. We could not find you in it.</p>
+    <p>Therapists' own websites got checked too. The door is open for a solo practice. The machines just need to know where you are.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">06</span>The reason, part two</p>
+    <h2>Different websites tell different stories about you</h2>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Where patients look</th><th>What it says today</th></tr></thead>
+        <tbody>
+          <tr><td class="src">Google</td><td>No listing for the practice at all.</td></tr>
+          <tr><td class="src">Psychology Today</td><td>Says you're in Harlingen, with an office in Bellevue.</td></tr>
+          <tr><td class="src">An old booking page</td><td>Gone, but old copies still show $150 fees and insurance you no longer take.</td></tr>
+          <tr><td class="src">therapist.com</td><td>Says you are no longer listed.</td></tr>
+          <tr><td class="src">BetterHelp</td><td>Lists your licenses but no practice name, city, or website.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="key">None of this is your fault. It is leftover paperwork from twelve years of practice. But machines cannot tell old from current, so they either skip you or describe someone you no longer are.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">07</span>Your competition, as AI sees it</p>
+    <h2>Big platforms take most of it. But solo therapists get named too.</h2>
+    <div class="badges">
+      <div class="badge"><p class="stmt">NOCD was named in <em>25 of 60</em> answers</p><p class="ctx">in Florida, in every single answer</p></div>
+      <div class="badge"><p class="stmt">Solo specialists were named <em>by name</em> in every state</p><p class="ctx">Loni Itah in Austin, Chad Brandt in Houston, Maggie Holland in Washington, and others</p></div>
+    </div>
+    <p class="key">This is the encouraging part. AI is not only recommending companies. One person with correct records gets named right alongside them.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">08</span>The patients behind the numbers</p>
+    <h2>You need a few dozen patients a year. The pool is hundreds of thousands.</h2>
+    <div class="statechips">
+      <div class="statechip"><b>Texas</b><span class="v">~280,000</span><p>adults with OCD this year</p></div>
+      <div class="statechip"><b>Florida</b><span class="v">~220,000</span><p>adults with OCD this year</p></div>
+      <div class="statechip"><b>Washington</b><span class="v">~75,000</span><p>adults with OCD this year</p></div>
+      <div class="statechip"><b>New Hampshire</b><span class="v">~13,000</span><p>adults with OCD this year</p></div>
+    </div>
+    <p class="key">About 1 in 80 adults live with OCD in any given year, and about 2 in 100 struggle with skin picking. Almost nobody treats skin picking. You do.</p>
+    <p>New Hampshire is the easiest win. There are so few specialists that AI names individual therapists there.</p>
+    <p class="aside">Estimates from public census data and published prevalence studies.</p>
+  </section>
+
+  <section class="panel">
+    <p class="eyebrow"><span class="dot"></span><span class="knum">09</span>Five moves, in order</p>
+    <h2>This is paperwork, not a marketing program</h2>
+    <ol class="plan">
+      <li><b>Get on the list AI reads most.</b> Join the International OCD Foundation directory. Worth one phone call to confirm you are not already listed.</li>
+      <li><b>Get on the list for your strongest niche.</b> The TLC Foundation directory for skin picking and hair pulling. Check first whether you are already on it; their therapist finder only shows results in a browser, so we could not check for you.</li>
+      <li><b>Correct the old records.</b> Fix the Psychology Today city, merge the duplicate Zocdoc pages, retire the dead booking page and the delisted profile, put your practice name on BetterHelp or close it.</li>
+      <li><b>Claim your Google listing.</b> The address can stay hidden. It gives patients and machines one card you control.</li>
+      <li><b>Add the one missing state page: Florida.</b> Your website already has pages for Texas, Washington, and New Hampshire. Florida, where you can also see patients, has no page yet.</li>
+    </ol>
+    <p>You have already done the hard part on your own site: state pages, and real writing on taboo thoughts, emetophobia, and skin picking. That work is why Gemini describes you so accurately when it finds you. What is missing is the layer above it: the lists machines trust.</p>
+    <p class="key">None of this changes what patients see or how you practice. It makes sure every list the machines read has you on file, correctly.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow"><span class="dot"></span><span class="knum">10</span>Measured, not promised</p>
+    <h2>We ask the same 60 questions again</h2>
+    <div class="beforeafter">
+      <div class="ba"><b>November 26, 2026</b><span class="v">named 2 of 60</span></div>
+      <div class="ba after"><b>After the fixes</b><span class="v">__ of 60</span></div>
+    </div>
+    <p class="key">Same questions, same method, new number. You judge the work on the before and after.</p>
+    <p class="aside">AI answers vary between asks, so treat 2 of 60 as a reading, not a constant. Everything we claim here is dated November 26 and checkable in the files.</p>
+  </section>
+
+  <footer class="page">
+    <p>Prepared by Glace (glace.sh) for Felix Murad, M.Ed., LPC-S · November 26, 2026 · Methodology as published in our <a href="https://glace.sh/blog/ai-healthcare-recommendation-study/">September 2026 study</a> of 1,140 AI answers across 19 healthcare markets.</p>
+  </footer>
+
+</div>
+</body>
+</html>
